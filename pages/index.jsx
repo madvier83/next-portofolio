@@ -478,7 +478,7 @@ export default function Home() {
                     <Image
                       alt=""
                       priority
-                      src={"/martpad1.png"}
+                      src={"/martpad2.png"}
                       width={720}
                       height={720}
                       className="rounded-lg brightness-[.8] mb-4"
