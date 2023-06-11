@@ -1,26 +1,101 @@
-html,
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.highlight {
+  @apply text-slate-200 font-semibold tracking-wide;
+}
+
+.glass {
+  @apply transition-all z-50 duration-300 bg-sky-100 shadow-lg bg-opacity-[0.03] group-hover:bg-opacity-[0.05] active:bg-rose-500 hover:bg-opacity-50 backdrop-blur-xl rounded-xl border-2 border-opacity-0 hover:border-opacity-5 border-b-black border-r-black border-t-white border-l-white;
+}
+
+
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: #0c1322;
+  overflow-x: hidden;
+  cursor: none;
+}
+.follower {
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  font-size: 14px;
+  padding: 4px 8px;
+  background-color: #142036;
+  border-radius: 50%;
+  color: #fff;
+  filter: blur(160px);
+  opacity: 0.8;
+  transform: translate(-50%, -50%);
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.cursor {
+  animation-duration: 100;
+  border-radius: 1px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid white;
+  position: absolute;
+  pointer-events: none;
+  transition: all;
+  z-index: 999;
 }
-
-* {
-  box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+@keyframes cursorAnim {
+  0% {
+    transform: scale(1) rotate(45deg);
+    transition: all;
   }
-  body {
-    color: white;
-    background: black;
+  50% {
+    transform: scale(5) rotate(45deg);
+    opacity: 0.1;
+    transition: all;
   }
+  100% {
+    transform: scale(1) rotate(45deg);
+    transition: all;
+  }
+}
+.expand {
+  animation: cursorAnim 0.2s forwards;
+  transition: all;
+
+  transform: rotate(45deg);
+}
+.trail {
+  /* className for the trail elements */
+  position: absolute;
+  margin: 4.8px 0 0 5.2px;
+  height: 6px;
+  width: 6px;
+  /* border-radius: 3px; */
+  transform: rotate(45deg);
+  background: white;
+}
+
+.web-link {
+  @apply text-teal-400 bg-teal-500 bg-opacity-10 px-4 py-2 rounded-md;
+}
+
+.hide-scroll {
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+.hide-scroll::-webkit-scrollbar {
+  /* WebKit */
+  width: 0;
+  height: 0;
+}
+body {
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+body::-webkit-scrollbar {
+  /* WebKit */
+  width: 0;
+  height: 0;
 }
