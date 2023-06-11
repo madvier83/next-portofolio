@@ -93,8 +93,7 @@ export default function Home() {
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
-        const token =
-          "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";
+        const token = process.env.NEXT_PUBLIC_TOKEN;
         const headers = {
           Authorization: `Bearer ${token}`,
         };
