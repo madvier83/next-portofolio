@@ -37,6 +37,8 @@ body {
   border-radius: 1px;
   width: 16px;
   height: 16px;
+  position: absolute;
+  /* transform: translate(50, 50); */
   border: 2px solid white;
   position: absolute;
   pointer-events: none;

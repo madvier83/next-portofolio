@@ -7,6 +7,7 @@ import CustomCursor from "../components/CustomCursor";
 import axios from "axios";
 
 export default function Home() {
+  const [pageLoading, setPageLoading] = useState(true)
   function greetings() {
     var currentHour = moment().format("HH");
 
@@ -85,6 +86,10 @@ export default function Home() {
   useEffect(() => {
     setMenu1Position(getDistanceFromTop(menu1Ref));
     setMenu2Position(getDistanceFromTop(menu2Ref));
+
+    setTimeout(() => {
+      setPageLoading(false)
+    }, 1000)
   }, []);
 
   const [userInfo, setUserInfo] = useState(null);
@@ -135,6 +140,13 @@ export default function Home() {
         className="h-full min-h-screen w-full text-slate-200 cursor-none select-none"
         ref={bodyRef}
       >
+        {pageLoading && (
+          <>
+            <div className="absolute w-full h-full flex bg-slate-950 z-[999] transition-all items-center justify-center">
+              <p className="text-5xl font-bold">Loading...</p>
+            </div>
+          </>
+        )}
         <div className="flex flex-col lg:flex-row justify-center">
           <div className="w-full lg:w-1/2 flex justify-center lg:justify-end px-2 pt-8 lg:pt-16 lg:px-16 mt-8 mb-8">
             <div className="flex flex-col max-w-lg min-h-[90vh] lg:min-h-0 px-4 hover:brightness-[1.4] transition-all duration-300">
@@ -238,7 +250,7 @@ export default function Home() {
                     >
                       <i className="fa-brands transition-all fa-github text-2xl"></i>
                     </a>
-                    <div className="absolute glass px-8 py-6 max-w-sm bottom-12 left-2 lg:left-0 w-[80vw] lg:opacity-0 peer-hover:opacity-100 hover:opacity-100 transition-all duration-300 delay-100">
+                    <div className="absolute glass px-8 py-6 max-w-sm bottom-12 left-2 lg:left-0 w-[80vw] lg:opacity-0 peer-hover:opacity-100 hover:opacity-100 transition-all duration-500">
                       <div className="flex gap-4">
                         <div className="w-12 h-12 rounded-full bg-slate-300 overflow-hidden">
                           <img
@@ -384,7 +396,8 @@ export default function Home() {
                       <div className="bg-rose-600 text-white px-4 py-1 rounded-lg brightness-125 w-[32%] flex justify-start gap-3 items-center truncate opacity-90">
                         <i className="fa-brands fa-laravel"></i> Laravel
                       </div>
-                      <div className="bg-teal-700 text-white px-4 py-1 rounded-lg brightness-125 w-[32%] flex justify-start gap-3 items-center truncate opacity-90">
+                      <div className="bg-teal-700 text-white px-3 py-1 rounded-lg brightness-125 w-[32%] flex justify-start gap-1 items-center truncate opacity-90">
+                        <i className="fab fa-css3"></i>
                         Tailwind CSS
                       </div>
                     </div>
@@ -498,7 +511,8 @@ export default function Home() {
                       CodeIgniter 3.
                     </p>
                     <div className="flex gap-2 mt-4">
-                      <div className="bg-orange-600 text-white px-4 py-1 rounded-lg brightness-125 w-[32%] flex justify-start gap-3 items-center truncate opacity-90">
+                      <div className="bg-orange-600 text-white px-4 py-1 rounded-lg brightness-125 w-[32%] flex justify-start gap-1 items-center truncate opacity-90">
+                        <i className="fas fa-fire"></i>
                         CodeIgniter
                       </div>
                       <div className="bg-indigo-600 text-white px-4 py-1 rounded-lg brightness-125 w-[32%] flex justify-start gap-3 items-center truncate opacity-90">
@@ -563,9 +577,9 @@ export default function Home() {
                   <div className="bg-yellow-600 text-white px-4 py-1 rounded-lg brightness-125 w-[32%] flex justify-start gap-3 items-center truncate opacity-90">
                     <i className="fa-brands fa-js"></i> JavaScript
                   </div>
-                  <div className="bg-blue-700 text-white px-4 py-1 rounded-lg brightness-125 w-[32%] flex justify-start gap-3 items-center truncate opacity-90">
+                  {/* <div className="bg-blue-700 text-white px-4 py-1 rounded-lg brightness-125 w-[32%] flex justify-start gap-3 items-center truncate opacity-90">
                     <i className="fa-brands fa-js"></i> Typescript
-                  </div>
+                  </div> */}
                   <div className="bg-indigo-600 text-white px-4 py-1 rounded-lg brightness-125 w-[32%] flex justify-start gap-3 items-center truncate opacity-90">
                     <i className="fa-brands fa-php"></i> PHP
                   </div>
@@ -584,8 +598,9 @@ export default function Home() {
                   <div className="bg-blue-600 text-white px-4 py-1 rounded-lg brightness-125 w-[32%] flex justify-start gap-3 items-center truncate opacity-90">
                     <i className="fa-brands fa-react"></i> React.JS
                   </div>
-                  <div className="bg-blue-600 text-white px-4 py-1 rounded-lg brightness-125 w-[32%] flex justify-start gap-3 items-center truncate opacity-90">
-                    React Native
+                  <div className="bg-teal-700 text-white px-3 py-1 rounded-lg brightness-125 w-[32%] flex justify-start gap-1 items-center truncate opacity-90">
+                    <i className="fab fa-css3"></i>
+                    Tailwind CSS
                   </div>
                   <div className="bg-rose-700 text-white px-4 py-1 rounded-lg brightness-125 w-[32%] flex justify-start gap-3 items-center truncate opacity-90">
                     <i className="fa-brands fa-laravel"></i> Laravel
@@ -593,11 +608,9 @@ export default function Home() {
                   <div className="bg-indigo-600 text-white px-4 py-1 rounded-lg brightness-125 w-[32%] flex justify-start gap-3 items-center truncate opacity-90">
                     <i className="fa-brands fa-bootstrap"></i> Bootstrap
                   </div>
-                  <div className="bg-orange-600 text-white px-4 py-1 rounded-lg brightness-125 w-[32%] flex justify-start gap-3 items-center truncate opacity-90">
+                  <div className="bg-orange-600 text-white px-4 py-1 rounded-lg brightness-125 w-[32%] flex justify-start gap-1 items-center truncate opacity-90">
+                    <i className="fas fa-fire"></i>
                     CodeIgniter
-                  </div>
-                  <div className="bg-teal-700 text-white px-4 py-1 rounded-lg brightness-125 w-[32%] flex justify-start gap-3 items-center truncate opacity-90">
-                    Tailwind CSS
                   </div>
                 </div>
                 <p className="mb-2">Tools & Platforms</p>

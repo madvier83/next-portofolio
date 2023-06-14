@@ -8,7 +8,7 @@ export default function CustomCursor() {
       if (cursorRef.current == null) return;
       cursorRef.current.setAttribute(
         "style",
-        "top: " + e.pageY + "px; left: " + e.pageX + "px;"
+        "top: " + e.pageY + "px; left: " + e.pageX + "px; opacity: 1;" 
       );
     });
     document.addEventListener("click", () => {
